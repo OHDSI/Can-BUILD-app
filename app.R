@@ -16,7 +16,7 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(
   pathToDriver = Sys.getenv("DATABASECONNECTOR_JAR_FOLDER", "/root")
 )
 
-resultsSchema <- Sys.getenv("RESULT_DATABASE_SCHEMA", "can_build_results")
+resultsSchema <- Sys.getenv("RESULT_DATABASE_SCHEMA", "skeletoncohortdiagnosticsstudy")
 
 shinyConfig <- OhdsiShinyAppBuilder::initializeModuleConfig() |>
   OhdsiShinyAppBuilder::addModuleConfig(OhdsiShinyAppBuilder::createDefaultAboutConfig()) |>

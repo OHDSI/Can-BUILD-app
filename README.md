@@ -10,7 +10,7 @@ Set at runtime, never in the image. For local testing put them in a git-ignored 
 OHDSI_RESULTS_DATABASE_SERVER=host/database
 OHDSI_RESULTS_DATABASE_USER=read_only_user
 OHDSI_RESULTS_DATABASE_PASSWORD=...
-RESULT_DATABASE_SCHEMA=can_build_results   # optional, this is the default
+RESULT_DATABASE_SCHEMA=skeletoncohortdiagnosticsstudy   # optional, this is the default (test run; switch to can_build_results later)
 ```
 
 Use a read-only database user.
