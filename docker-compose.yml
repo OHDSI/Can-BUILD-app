@@ -1,0 +1,6 @@
+services:
+  canbuildapp:
+    image: ohdsi/can-build-app:1.0.0
+    env_file: .env
+    ports:
+      - "3838:3838"
