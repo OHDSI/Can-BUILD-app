@@ -11,7 +11,6 @@ shinydbServer=host
 shinydbDatabase=database
 shinydbPort=5432
 shinydbPw=...
-RESULT_DATABASE_SCHEMA=skeletoncohortdiagnosticsstudy   # optional, default (test run; switch to can_build_results later)
 ```
 
 The database user is fixed to `shinyproxy` (read-only).
