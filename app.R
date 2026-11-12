@@ -12,8 +12,7 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(
   pathToDriver = Sys.getenv("DATABASECONNECTOR_JAR_FOLDER", "/root")
 )
 
-# Test schema; switch to can_build_results once the admin creates it
-resultsSchema <- "skeletoncohortdiagnosticsstudy"
+resultsSchema <- "can_build"
 
 shinyConfig <- OhdsiShinyAppBuilder::initializeModuleConfig() |>
   OhdsiShinyAppBuilder::addModuleConfig(OhdsiShinyAppBuilder::createDefaultAboutConfig()) |>

@@ -1,6 +1,6 @@
 services:
   canbuildapp:
-    image: ohdsi/can-build-app:1.0.2
+    image: ohdsi/can-build-app:1.0.3
     platform: linux/amd64
     env_file: .env
     ports:
