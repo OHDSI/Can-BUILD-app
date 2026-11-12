@@ -1,4 +1,4 @@
-FROM ohdsi/broadsea-shiny
+FROM ohdsi/broadsea-shiny:1.2.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG CRAN=https://packagemanager.posit.co/cran/__linux__/focal/latest
@@ -23,7 +23,9 @@ RUN R -e "remove.packages('stringi'); install.packages('stringi', type='source')
 RUN R -e "DatabaseConnector::downloadJdbcDrivers('postgresql', pathToDriver='/root')"
 
 RUN R -e "remotes::install_github('OHDSI/ResultModelManager', update='always')"
-RUN R -e "remotes::install_github(c('OHDSI/OhdsiShinyModules', 'OHDSI/OhdsiShinyAppBuilder'), update='always', dependencies=TRUE)"
+RUN R -e "remotes::install_github('OHDSI/OhdsiReportGenerator')"
+RUN R -e "remotes::install_github('OHDSI/OhdsiShinyModules'); if (!require('OhdsiShinyModules', quietly = TRUE)) stop('OhdsiShinyModules failed')"
+RUN R -e "remotes::install_github('OHDSI/OhdsiShinyAppBuilder'); if (!require('OhdsiShinyAppBuilder', quietly = TRUE)) stop('OhdsiShinyAppBuilder failed')"
 
 WORKDIR /srv/shiny-server/
 RUN chmod a+rx /root

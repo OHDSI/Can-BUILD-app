@@ -7,13 +7,14 @@ Docker build of the Can-BUILD results viewer (Shiny), deployed through [ShinyPro
 Set at runtime, never in the image. For local testing put them in a git-ignored `.env`:
 
 ```
-OHDSI_RESULTS_DATABASE_SERVER=host/database
-OHDSI_RESULTS_DATABASE_USER=read_only_user
-OHDSI_RESULTS_DATABASE_PASSWORD=...
-RESULT_DATABASE_SCHEMA=skeletoncohortdiagnosticsstudy   # optional, this is the default (test run; switch to can_build_results later)
+shinydbServer=host
+shinydbDatabase=database
+shinydbPort=5432
+shinydbPw=...
+RESULT_DATABASE_SCHEMA=skeletoncohortdiagnosticsstudy   # optional, default (test run; switch to can_build_results later)
 ```
 
-Use a read-only database user.
+The database user is fixed to `shinyproxy` (read-only).
 
 ## Build and publish
 

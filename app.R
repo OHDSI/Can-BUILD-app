@@ -1,18 +1,14 @@
-# Results viewer for the Can-BUILD study. All connection values come from
-# environment variables (ShinyProxy mounts them via /root/.Renviron); none are stored in the image.
+# Results viewer for the Can-BUILD study. Connection values come from environment
+# variables (ShinyProxy mounts /root/.Renviron); none are stored in the image.
 options(java.parameters = "-Xss15m")
 
-required <- c("OHDSI_RESULTS_DATABASE_SERVER", "OHDSI_RESULTS_DATABASE_USER", "OHDSI_RESULTS_DATABASE_PASSWORD")
-missing <- required[!nzchar(Sys.getenv(required))]
-if (length(missing) > 0) {
-  stop("Missing environment variables: ", paste(missing, collapse = ", "))
-}
-
+# Same shared .Renviron variables as the other OHDSI apps (shinydb*)
 connectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "postgresql",
-  server = Sys.getenv("OHDSI_RESULTS_DATABASE_SERVER"),
-  user = Sys.getenv("OHDSI_RESULTS_DATABASE_USER"),
-  password = Sys.getenv("OHDSI_RESULTS_DATABASE_PASSWORD"),
+  server = paste0(Sys.getenv("shinydbServer"), "/", Sys.getenv("shinydbDatabase")),
+  port = Sys.getenv("shinydbPort"),
+  user = "shinyproxy",
+  password = Sys.getenv("shinydbPw"),
   pathToDriver = Sys.getenv("DATABASECONNECTOR_JAR_FOLDER", "/root")
 )
 
