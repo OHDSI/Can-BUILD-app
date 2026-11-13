@@ -23,7 +23,7 @@ RUN R -e "remove.packages('stringi'); install.packages('stringi', type='source')
 RUN R -e "DatabaseConnector::downloadJdbcDrivers('postgresql', pathToDriver='/root')"
 
 RUN R -e "remotes::install_github('OHDSI/ResultModelManager', update='always')"
-RUN R -e "remotes::install_github('OHDSI/OhdsiReportGenerator')"
+RUN R -e "remotes::install_github('OHDSI/OhdsiReportGenerator@develop')"
 RUN R -e "remotes::install_github('OHDSI/OhdsiShinyModules'); if (!require('OhdsiShinyModules', quietly = TRUE)) stop('OhdsiShinyModules failed')"
 RUN R -e "remotes::install_github('OHDSI/OhdsiShinyAppBuilder'); if (!require('OhdsiShinyAppBuilder', quietly = TRUE)) stop('OhdsiShinyAppBuilder failed')"
 

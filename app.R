@@ -26,7 +26,10 @@ app <- OhdsiShinyAppBuilder::createShinyApp(
   studyDescription = "Can-BUILD study results",
   config = shinyConfig,
   connectionDetails = connectionDetails,
-  resultDatabaseSettings = OhdsiShinyAppBuilder::createDefaultResultDatabaseSettings(schema = resultsSchema),
+  resultDatabaseSettings = OhdsiShinyAppBuilder::createDefaultResultDatabaseSettings(
+    schema = resultsSchema,
+    incidenceTablePrefix = 'c_'
+  ),
   themePackage = "OhdsiShinyAppBuilder"
 )
 
